@@ -12,6 +12,8 @@ class MovieListing extends StatefulWidget {
 class _MovieListingState extends State<MovieListing> {
   int _ticketQuantity = 0;
 
+  String _bookingMessage = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,10 +74,28 @@ class _MovieListingState extends State<MovieListing> {
                   ],
                 ),
                 ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Book Ticket'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.teal,
+                    foregroundColor: Colors.white,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _bookingMessage =
+                          'Added $_ticketQuantity ticket(s) to your order!';
+                    });
+                  },
+                  child: const Text('Add to order'),
                 ),
               ],
+            ),
+            const SizedBox(height: 16),
+            Text(
+              _bookingMessage,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.teal,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
