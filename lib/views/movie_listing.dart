@@ -17,22 +17,38 @@ class MovieListing extends StatelessWidget {
       drawer: const NavDrawer(),
       body: Container(
         padding: const EdgeInsets.all(16.0),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Interstellar',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 4),
-            Text(
-              '2h | 49 mins',
-              style: TextStyle(fontSize: 14, color: Colors.grey),
+            const SizedBox(height: 8),
+            const Row(
+              children: [
+                Text('12A', style: TextStyle(fontSize: 14, color: Colors.grey)),
+                SizedBox(width: 8),
+                Text('|', style: TextStyle(fontSize: 14, color: Colors.grey)),
+                SizedBox(width: 8),
+                Text('169 mins', style: TextStyle(fontSize: 14, color: Colors.grey)),
+              ],
             ),
-            SizedBox(height: 12),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
               style: TextStyle(fontSize: 16),
+            ),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Quantity Dropdown (Next Exercise)'),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Book Ticket'),
+                ),
+              ],
             ),
           ],
         ),
