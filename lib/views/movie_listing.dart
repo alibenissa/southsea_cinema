@@ -31,23 +31,23 @@ class _MovieListingState extends State<MovieListing> {
           children: [
             const Text(
               'Interstellar',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: cinemaHeaderStyle,
             ),
             const SizedBox(height: 8),
             const Row(
               children: [
-                Text('12A', style: TextStyle(fontSize: 14, color: Colors.grey)),
+                Text('12A', style: TextStyle(fontSize: 14, color: cinemaFontMuted)),
                 SizedBox(width: 8),
-                Text('|', style: TextStyle(fontSize: 14, color: Colors.grey)),
+                Text('|', style: TextStyle(fontSize: 14, color: cinemaFontMuted)),
                 SizedBox(width: 8),
                 Text('169 mins',
-                    style: TextStyle(fontSize: 14, color: Colors.grey)),
+                    style: TextStyle(fontSize: 14, color: cinemaFontMuted)),
               ],
             ),
             const SizedBox(height: 16),
             const Text(
               'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16, color: cinemaFontWhite),
             ),
             const Spacer(),
             Row(
@@ -75,8 +75,11 @@ class _MovieListingState extends State<MovieListing> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal,
-                    foregroundColor: Colors.white,
+                    backgroundColor: cinemaBrand,
+                    foregroundColor: cinemaFontWhite,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
                   ),
                   onPressed: () {
                     setState(() {
@@ -93,7 +96,7 @@ class _MovieListingState extends State<MovieListing> {
               _bookingMessage,
               style: const TextStyle(
                 fontSize: 16,
-                color: Colors.teal,
+                color: cinemaBrand,
                 fontWeight: FontWeight.bold,
               ),
             ),
