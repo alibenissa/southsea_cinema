@@ -11,7 +11,7 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListingState extends State<MovieListing> {
   int _ticketQuantity = 0;
-
+  
   String _bookingMessage = '';
 
   @override
@@ -36,9 +36,11 @@ class _MovieListingState extends State<MovieListing> {
             const SizedBox(height: 8),
             const Row(
               children: [
-                Text('12A', style: TextStyle(fontSize: 14, color: cinemaFontMuted)),
+                Text('12A',
+                    style: TextStyle(fontSize: 14, color: cinemaFontMuted)),
                 SizedBox(width: 8),
-                Text('|', style: TextStyle(fontSize: 14, color: cinemaFontMuted)),
+                Text('|',
+                    style: TextStyle(fontSize: 14, color: cinemaFontMuted)),
                 SizedBox(width: 8),
                 Text('169 mins',
                     style: TextStyle(fontSize: 14, color: cinemaFontMuted)),
@@ -50,46 +52,97 @@ class _MovieListingState extends State<MovieListing> {
               style: TextStyle(fontSize: 16, color: cinemaFontWhite),
             ),
             const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // 4. The DropdownMenu replacing the placeholder text
-                DropdownMenu<int>(
-                  initialSelection: 0,
-                  label: const Text('Tickets'),
-                  onSelected: (int? value) {
-                    if (value != null) {
-                      setState(() {
-                        _ticketQuantity = value; // Update the state
-                      });
-                    }
-                  },
-                  dropdownMenuEntries: const [
-                    DropdownMenuEntry(value: 0, label: '0'),
-                    DropdownMenuEntry(value: 1, label: '1'),
-                    DropdownMenuEntry(value: 2, label: '2'),
-                    DropdownMenuEntry(value: 3, label: '3'),
-                    DropdownMenuEntry(value: 4, label: '4'),
-                    DropdownMenuEntry(value: 5, label: '5'),
-                  ],
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: cinemaBrand,
-                    foregroundColor: cinemaFontWhite,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                    ),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _bookingMessage =
-                          'Added $_ticketQuantity ticket(s) to your order!';
-                    });
-                  },
-                  child: const Text('Add to order'),
-                ),
-              ],
+            LayoutBuilder(
+              builder: (context, constraints) {
+                if (constraints.maxWidth > 600) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      DropdownMenu<int>(
+                        initialSelection: 0,
+                        label: const Text('Tickets',
+                            style: TextStyle(color: cinemaFontWhite)),
+                        textStyle: const TextStyle(color: cinemaFontWhite),
+                        onSelected: (int? value) {
+                          if (value != null) {
+                            setState(() {
+                              _ticketQuantity = value;
+                            });
+                          }
+                        },
+                        dropdownMenuEntries: const [
+                          DropdownMenuEntry(value: 0, label: '0'),
+                          DropdownMenuEntry(value: 1, label: '1'),
+                          DropdownMenuEntry(value: 2, label: '2'),
+                          DropdownMenuEntry(value: 3, label: '3'),
+                          DropdownMenuEntry(value: 4, label: '4'),
+                          DropdownMenuEntry(value: 5, label: '5'),
+                        ],
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: cinemaBrand,
+                          foregroundColor: cinemaFontWhite,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero,
+                          ),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _bookingMessage =
+                                'Added $_ticketQuantity ticket(s) to your order!';
+                          });
+                        },
+                        child: const Text('Add to order'),
+                      ),
+                    ],
+                  );
+                } else {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      DropdownMenu<int>(
+                        initialSelection: 0,
+                        label: const Text('Tickets',
+                            style: TextStyle(color: cinemaFontWhite)),
+                        textStyle: const TextStyle(color: cinemaFontWhite),
+                        onSelected: (int? value) {
+                          if (value != null) {
+                            setState(() {
+                              _ticketQuantity = value;
+                            });
+                          }
+                        },
+                        dropdownMenuEntries: const [
+                          DropdownMenuEntry(value: 0, label: '0'),
+                          DropdownMenuEntry(value: 1, label: '1'),
+                          DropdownMenuEntry(value: 2, label: '2'),
+                          DropdownMenuEntry(value: 3, label: '3'),
+                          DropdownMenuEntry(value: 4, label: '4'),
+                          DropdownMenuEntry(value: 5, label: '5'),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: cinemaBrand,
+                          foregroundColor: cinemaFontWhite,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero,
+                          ),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _bookingMessage =
+                                'Added $_ticketQuantity ticket(s) to your order!';
+                          });
+                        },
+                        child: const Text('Add to order'),
+                      ),
+                    ],
+                  );
+                }
+              },
             ),
             const SizedBox(height: 16),
             Text(
