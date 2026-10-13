@@ -11,7 +11,7 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListingState extends State<MovieListing> {
   int _ticketQuantity = 0;
-  
+
   String _bookingMessage = '';
 
   @override
@@ -55,8 +55,8 @@ class _MovieListingState extends State<MovieListing> {
             LayoutBuilder(
               builder: (context, constraints) {
                 if (constraints.maxWidth > 600) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       DropdownMenu<int>(
                         initialSelection: 0,
@@ -79,6 +79,9 @@ class _MovieListingState extends State<MovieListing> {
                           DropdownMenuEntry(value: 5, label: '5'),
                         ],
                       ),
+                      const SizedBox(
+                          height:
+                              16), // Adds the gap between dropdown and button
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: cinemaBrand,
