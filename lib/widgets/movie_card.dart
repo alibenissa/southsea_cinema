@@ -1,0 +1,87 @@
+import 'package:flutter/material.dart';
+import 'package:southsea_cinema/models/movie.dart';
+import 'package:southsea_cinema/constants.dart';
+
+class MovieCard extends StatelessWidget {
+  final Movie movie;
+
+  const MovieCard({super.key, required this.movie});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: cinemaSurface,
+      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(
+                  movie.posterImagePath,
+                  width: 80,
+                  height: 120,
+                  fit: BoxFit.cover,
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        movie.title,
+                        style: cinemaHeaderStyle,
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Text(movie.ageRating, style: const TextStyle(fontSize: 14, color: cinemaFontMuted)),
+                          const SizedBox(width: 8),
+                          const Text('|', style: TextStyle(fontSize: 14, color: cinemaFontMuted)),
+                          const SizedBox(width: 8),
+                          Text(movie.screeningTime, style: const TextStyle(fontSize: 14, color: cinemaFontMuted)),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        movie.synopsis,
+                        style: const TextStyle(fontSize: 14, color: cinemaFontWhite),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '£${movie.ticketPrice.toStringAsFixed(2)}',
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: cinemaFontWhite),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: cinemaBrand,
+                    foregroundColor: cinemaFontWhite,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
+                  ),
+                  onPressed: () {
+                    // For now, this just prints to the debug console
+                    print('Book tickets for ${movie.title}');
+                  },
+                  child: const Text('Book Now'),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
