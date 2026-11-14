@@ -64,7 +64,7 @@ class _MovieListingState extends State<MovieListing> {
                     DropdownMenu<int>(
                       initialSelection: 0,
                       label: Text(
-                        'Tickets (£${widget.movie.ticketPrice.toStringAsFixed(2)} each)',
+                        'Tickets (${widget.movie.formattedPrice})',
                         style: const TextStyle(color: cinemaFontWhite),
                       ),
                       textStyle: const TextStyle(color: cinemaFontWhite),
