@@ -43,16 +43,20 @@ class _MovieListingState extends State<MovieListing> {
                 // Dynamic Age Rating and Screening Time
                 Row(
                   children: [
-                    Text(widget.movie.ageRating,
-                        style: const TextStyle(
-                            fontSize: 14, color: cinemaFontMuted),),
+                    Text(
+                      widget.movie.ageRating,
+                      style:
+                          const TextStyle(fontSize: 14, color: cinemaFontMuted),
+                    ),
                     const SizedBox(width: 8),
                     const Text('|',
                         style: TextStyle(fontSize: 14, color: cinemaFontMuted)),
                     const SizedBox(width: 8),
-                    Text(widget.movie.screeningTime,
-                        style: const TextStyle(
-                            fontSize: 14, color: cinemaFontMuted),),
+                    Text(
+                      widget.movie.screeningTime,
+                      style:
+                          const TextStyle(fontSize: 14, color: cinemaFontMuted),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 16),

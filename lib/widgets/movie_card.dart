@@ -39,17 +39,24 @@ class MovieCard extends StatelessWidget {
                       const SizedBox(height: 8),
                       Row(
                         children: [
-                          Text(movie.ageRating, style: const TextStyle(fontSize: 14, color: cinemaFontMuted)),
+                          Text(movie.ageRating,
+                              style: const TextStyle(
+                                  fontSize: 14, color: cinemaFontMuted)),
                           const SizedBox(width: 8),
-                          const Text('|', style: TextStyle(fontSize: 14, color: cinemaFontMuted)),
+                          const Text('|',
+                              style: TextStyle(
+                                  fontSize: 14, color: cinemaFontMuted)),
                           const SizedBox(width: 8),
-                          Text(movie.screeningTime, style: const TextStyle(fontSize: 14, color: cinemaFontMuted)),
+                          Text(movie.screeningTime,
+                              style: const TextStyle(
+                                  fontSize: 14, color: cinemaFontMuted)),
                         ],
                       ),
                       const SizedBox(height: 8),
                       Text(
                         movie.synopsis,
-                        style: const TextStyle(fontSize: 14, color: cinemaFontWhite),
+                        style: const TextStyle(
+                            fontSize: 14, color: cinemaFontWhite),
                       ),
                     ],
                   ),
@@ -61,8 +68,11 @@ class MovieCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${movie.formattedPrice}',
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: cinemaFontWhite),
+                  movie.formattedPrice,
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: cinemaFontWhite),
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
