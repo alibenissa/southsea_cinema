@@ -30,11 +30,10 @@ void main() {
       expect(find.text('Book Now'), findsNWidgets(2));
     });
     testWidgets(
-        'Tapping Book Now opens MovieListing and Add to order shows feedback',
+        'Booking flow: book Interstellar, go back, then book Oppenheimer',
         (WidgetTester tester) async {
       await tester.pumpWidget(const SouthseaCinemaApp());
 
-      // Find the Book Now button inside the Interstellar card
       final Finder interstellarBookNow = find.descendant(
         of: find.widgetWithText(MovieCard, 'Interstellar'),
         matching: find.text('Book Now'),
@@ -43,18 +42,47 @@ void main() {
       await tester.tap(interstellarBookNow);
       await tester.pumpAndSettle();
 
-      // Check the listing page shows Interstellar's details
       expect(find.byType(MovieListing), findsOneWidget);
       expect(find.text('Interstellar'), findsOneWidget);
       expect(find.text('12A'), findsOneWidget);
       expect(find.text('169 mins'), findsOneWidget);
 
-      // Tap Add to order and check the feedback message
       await tester.tap(find.text('Add to order'));
       await tester.pump();
 
       expect(
         find.text('Added 0 ticket(s) to your order for Interstellar!'),
+        findsOneWidget,
+      );
+
+      final NavigatorState navigator = tester.state(find.byType(Navigator));
+      navigator.pop();
+      await tester.pumpAndSettle();
+
+      expect(find.byType(HomeView), findsOneWidget);
+      expect(find.byType(MovieListing), findsNothing);
+
+      final Finder oppenheimerBookNow = find.descendant(
+        of: find.widgetWithText(MovieCard, 'Oppenheimer'),
+        matching: find.text('Book Now'),
+      );
+
+      await tester.ensureVisible(oppenheimerBookNow);
+      await tester.tap(oppenheimerBookNow);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(MovieListing), findsOneWidget);
+      expect(find.text('Oppenheimer'), findsOneWidget);
+      expect(find.text('15'), findsOneWidget);
+      expect(find.text('180 mins'), findsOneWidget);
+
+      expect(find.textContaining('Added'), findsNothing);
+
+      await tester.tap(find.text('Add to order'));
+      await tester.pump();
+
+      expect(
+        find.text('Added 0 ticket(s) to your order for Oppenheimer!'),
         findsOneWidget,
       );
     });

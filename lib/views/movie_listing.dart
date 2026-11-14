@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
-import 'package:southsea_cinema/models/movie.dart'; // Import your Movie model
+import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListing extends StatefulWidget {
   final Movie movie;
@@ -40,7 +40,7 @@ class _MovieListingState extends State<MovieListing> {
                   style: cinemaHeaderStyle,
                 ),
                 const SizedBox(height: 8),
-                // Dynamic Age Rating and Screening Time
+
                 Row(
                   children: [
                     Text(
@@ -67,7 +67,7 @@ class _MovieListingState extends State<MovieListing> {
                   fit: BoxFit.cover,
                 ),
                 const SizedBox(height: 16),
-                // Dynamic Synopsis
+
                 Text(
                   widget.movie.synopsis,
                   style: const TextStyle(fontSize: 16, color: cinemaFontWhite),
