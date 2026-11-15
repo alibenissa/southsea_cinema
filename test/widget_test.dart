@@ -51,7 +51,7 @@ void main() {
       await tester.pump();
 
       expect(
-        find.text('Added 0 ticket(s) to your order for Interstellar!'),
+        find.text('Please select at least 1 ticket'),
         findsOneWidget,
       );
 
@@ -82,7 +82,7 @@ void main() {
       await tester.pump();
 
       expect(
-        find.text('Added 0 ticket(s) to your order for Oppenheimer!'),
+        find.text('Please select at least 1 ticket'),
         findsOneWidget,
       );
     });
