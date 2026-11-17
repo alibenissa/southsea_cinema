@@ -14,15 +14,15 @@ void main() {
 
     test('UserSettings stores the values passed in', () {
       const UserSettings settings = UserSettings(
-        name: 'Ali Ben Issa',
+        name: 'Alex Smith',
         address: '10 Elm Road, Portsmouth',
-        email: 'ali@example.com',
+        email: 'alex@example.com',
         receiveNewsletter: true,
       );
 
-      expect(settings.name, 'Ali Ben Issa');
+      expect(settings.name, 'Alex Smith');
       expect(settings.address, '10 Elm Road, Portsmouth');
-      expect(settings.email, 'ali@example.com');
+      expect(settings.email, 'alex@example.com');
       expect(settings.receiveNewsletter, isTrue);
     });
   });

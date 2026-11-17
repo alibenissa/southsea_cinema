@@ -83,7 +83,7 @@ void main() {
       expect(find.text('15'), findsOneWidget);
       expect(find.text('180 mins'), findsOneWidget);
 
-      expect(find.textContaining('Added'), findsNothing);
+      expect(find.textContaining('Please select at least 1 ticket'), findsNothing);
 
       await tester.tap(find.text('Add to order'));
       await tester.pump();
