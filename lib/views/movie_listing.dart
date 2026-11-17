@@ -57,7 +57,6 @@ class _MovieListingState extends State<MovieListing> {
                   style: cinemaHeaderStyle,
                 ),
                 const SizedBox(height: 8),
-
                 Row(
                   children: [
                     Text(
@@ -84,7 +83,6 @@ class _MovieListingState extends State<MovieListing> {
                   fit: BoxFit.cover,
                 ),
                 const SizedBox(height: 16),
-
                 Text(
                   widget.movie.synopsis,
                   style: const TextStyle(fontSize: 16, color: cinemaFontWhite),
